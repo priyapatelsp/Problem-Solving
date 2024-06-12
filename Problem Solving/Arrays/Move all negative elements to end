@@ -1,0 +1,20 @@
+Move all negative elements to end
+https://www.geeksforgeeks.org/problems/move-all-negative-elements-to-end1813/1
+
+------------------------------------------------------------------------------------
+
+ public void segregateElements(int arr[], int n) {
+        int j=0;
+         ArrayList<Integer> neg = new ArrayList<>();
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]>=0){
+                arr[j++]=arr[i];
+            }else{
+                neg.add(arr[i]);
+            }
+        }
+        for(int i=0;i<neg.size();i++){
+           arr[j++]=neg.get(i);
+        }
+    }
+}

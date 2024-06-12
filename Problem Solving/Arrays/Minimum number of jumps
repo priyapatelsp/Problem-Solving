@@ -1,0 +1,26 @@
+Minimum number of jumps
+
+https://www.geeksforgeeks.org/problems/minimum-number-of-jumps-1587115620/1
+---------------------------------------------------------------------------------
+
+static int minJumps(int[] arr, int n) {
+        int start=arr[0];
+        if(n==1)return 0;
+        int count=0;
+        int index=0,end=0,jump=0,max=arr[0];
+        while(index<=end){
+            if(index+arr[index]>max){
+                max=index+arr[index];
+            }
+            if(index==end){
+                if(max<n-1){
+                    end=max;
+                    jump++;
+                }else{
+                    return ++jump;
+                }
+            }
+            index++;
+        }
+        return -1;
+    }

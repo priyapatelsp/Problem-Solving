@@ -1,0 +1,22 @@
+cyclically rotate an array by one
+
+https://www.geeksforgeeks.org/problems/cyclically-rotate-an-array-by-one2614/1
+--------------------------------------------------------------------------------------
+
+ public void reverse(int arr[], int left,int right)
+    {
+        while(left<right){
+            int temp=arr[left];
+            arr[left]=arr[right];
+            arr[right]=temp;
+            left++;
+            right--;
+        }
+    }
+
+    public void rotate(int arr[], int n)
+    {
+        reverse(arr,0,n-2);
+        reverse(arr,0,n-1);
+
+    }

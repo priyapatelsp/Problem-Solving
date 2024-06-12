@@ -1,0 +1,26 @@
+Sort an array of 0s, 1s and 2s
+https://www.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s4231/1
+
+------------------------------------------------------------------------------------------
+public static void sort012(int a[], int n)
+    {
+        int mid=0;
+        int right=n-1;
+        int left=0;
+        while(mid<=right){
+              int x = a[mid];
+            if(x==0){
+                int temp=a[mid];
+                a[mid]=a[left];
+                a[left]=temp;
+                mid++;
+                left++;
+            }else if(x==1){
+                mid++;
+            }else{
+                int temp=a[mid];
+                a[mid]=a[right];
+                a[right]=temp;
+                right--;
+            }
+        }
