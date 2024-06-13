@@ -1,0 +1,25 @@
+Overlapping Intervals
+
+https://www.geeksforgeeks.org/problems/overlapping-intervals--170633/1
+--------------------------------------------------------------------------------
+
+ public int[][] overlappedInterval(int[][] Intervals)
+    {
+        //sort based on first element
+        // then check if the second element is less than the first one or not
+         Arrays.sort(Intervals,(a,b)->Integer.compare(a[0], b[0]));
+         int res=0;
+         for(int i=1;i<Intervals.length;i++){
+             if(Intervals[res][1]>=Intervals[i][0]){
+                Intervals[res][0]=Math.min(Intervals[res][0],Intervals[i][0]);
+                Intervals[res][1]=Math.max(Intervals[res][1],Intervals[i][1]);
+             }else{
+                res++;
+                Intervals[res][0] = Intervals[i][0];
+                Intervals[res][1] = Intervals[i][1];
+             }
+
+         }
+          return Arrays.copyOfRange(Intervals, 0 , res+1);
+
+    }
