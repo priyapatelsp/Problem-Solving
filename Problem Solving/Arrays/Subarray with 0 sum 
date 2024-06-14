@@ -1,0 +1,21 @@
+Subarray with 0 sum
+
+https://www.geeksforgeeks.org/problems/subarray-with-0-sum-1587115621/1
+----------------------------------------------------------------------------
+
+static boolean findsum(int arr[],int n)
+    {
+        HashSet<Integer> ls = new HashSet<>();
+       int sum=0;
+       ls.add(0);
+       for(int i=0;i<n;i++){
+           sum+=arr[i];
+           if(ls.contains(sum)){
+               return true;
+           }
+           if(sum==0)return true;
+               ls.add(sum);
+
+       }
+       return false;
+    }
