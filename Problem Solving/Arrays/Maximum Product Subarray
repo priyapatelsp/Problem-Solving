@@ -1,0 +1,17 @@
+Maximum Product Subarray
+
+https://www.geeksforgeeks.org/problems/maximum-product-subarray3604/1
+--------------------------------------------------------------------------
+
+long maxProduct(int[] arr, int n) {
+        long multi=1;
+        long multiMax=Long.MIN_VALUE;
+        for(int i=0;i<n;i++){
+            multi=multi*arr[i];
+            multiMax=Math.max(multi,multiMax);
+            if(multi==0){
+                multi=1;
+            }
+        }
+        return multiMax;
+    }
