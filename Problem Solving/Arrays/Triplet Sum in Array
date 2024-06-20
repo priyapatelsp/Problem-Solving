@@ -1,0 +1,33 @@
+Triplet Sum in Array
+
+https://www.geeksforgeeks.org/problems/triplet-sum-in-array-1587115621/1
+--------------------------------------------------------------------------
+
+
+ public static boolean find3Numbers(int A[], int n, int X) { 
+    
+       int i=0,j=n-1,k=1;
+       int sum=0,flg=0;
+       Arrays.sort(A);
+       
+       while(i<n){
+           k=i+1;
+           j=n-1;
+           while(i<j & k<j){
+               sum=A[i]+A[k]+A[j];
+               if(sum<X){
+                   k++;
+               }else if(sum>X){
+                   j--;
+               }else{
+                   flg=1;
+                   return true;
+               }
+           }
+           i++;
+       }
+       
+       if(flg==1)return true;
+       return false;
+    
+    }

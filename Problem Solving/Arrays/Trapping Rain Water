@@ -1,0 +1,24 @@
+Trapping Rain Water
+
+https://www.geeksforgeeks.org/problems/trapping-rain-water-1587115621/1
+-------------------------------------------------------------------------
+
+static long trappingWater(int arr[], int n) { 
+       int i=0;
+       int left=arr[i];
+       long sum=0;
+       int j=n-1;
+       int right=arr[j];
+       while(i<j){
+           if(left<=right){
+               sum+=left-arr[i];
+               i++;
+               left=Math.max(left,arr[i]);
+           }else{
+               sum+=right-arr[j];
+               j--;
+               right=Math.max(right,arr[j]);
+           }
+       }
+       return sum;
+    } 
