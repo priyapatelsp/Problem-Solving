@@ -1,0 +1,27 @@
+Palindromic Array
+
+https://www.geeksforgeeks.org/problems/palindromic-array-1587115620/1
+
+-------------------------------------------------------------------------
+
+ public static boolean checkPalin(String a)
+           {
+                 int len=a.length();
+                 int start=0;
+                 int end=len-1;
+                 while(start<end){
+                     if(a.charAt(start)!=a.charAt(end))return false;
+                     start++;
+                     end--;
+                 }
+                 return true;
+           }
+           
+	public static int palinArray(int[] a, int n)
+           {
+                  for(int i=0;i<n;i++){
+                      String l=String.valueOf(a[i]);
+                     if(!checkPalin(l))return 0;
+                  }
+                  return 1;
+           }
