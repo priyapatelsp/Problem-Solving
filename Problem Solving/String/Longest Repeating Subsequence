@@ -1,0 +1,18 @@
+Longest Repeating Subsequence
+
+https://www.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1
+--------------------------------------------------------------------------
+
+public int LongestRepeatingSubsequence(String str)
+    {
+        
+        int[][] dp = new int[str.length() + 1][str.length() + 1];
+        for (int[] a : dp) Arrays.fill(a, -1);
+        return lcs(dp, str, str, 0, 0);
+    }
+      private int lcs(int[][] dp, String s1, String s2, int i, int j) {
+        if (i == s1.length() || j == s2.length()) return 0;
+        else if (dp[i][j] != -1) return dp[i][j];
+        else if (s1.charAt(i) == s2.charAt(j) && i != j) return dp[i][j] = 1 + lcs(dp, s1, s2, i + 1, j + 1);
+        else return dp[i][j] = Math.max(lcs(dp, s1, s2, i, j + 1), lcs(dp, s1, s2, i + 1, j));
+    }
