@@ -1,7 +1,7 @@
 Look and Say Pattern
 
 https://www.geeksforgeeks.org/problems/decode-the-pattern1138/1
------------------------------------
+---------------------------------------------------------------------
 
 static String lookandsay(int n) {
        
@@ -9,7 +9,7 @@ static String lookandsay(int n) {
     String temp="1";
     
     for(int i=2;i<=n;i++){
-        String newTemp="";
+        String ans="";
         int j=0;
         while(j<temp.length()){
             char t=temp.charAt(j); 
@@ -21,10 +21,10 @@ static String lookandsay(int n) {
             }
            
             String c=Integer.toString(count);
-            newTemp+=c+t;
+            ans+=c+t;
             j=k;
         }
-        temp=newTemp;
+        temp=ans;
     }
     return temp;
         
