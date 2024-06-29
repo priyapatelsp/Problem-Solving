@@ -3,7 +3,8 @@ Longest Repeating Subsequence
 https://www.geeksforgeeks.org/problems/longest-repeating-subsequence2004/1
 --------------------------------------------------------------------------
 
-public int LongestRepeatingSubsequence(String str)
+
+public static int LongestRepeatingSubsequence(String str)
     {
         
         int[][] dp = new int[str.length() + 1][str.length() + 1];
