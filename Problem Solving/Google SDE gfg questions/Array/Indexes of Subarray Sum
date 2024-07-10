@@ -1,0 +1,30 @@
+Indexes of Subarray Sum
+------------------------
+
+static ArrayList<Integer> subarraySum(int[] arr, int n, int s) {
+       
+       int sum=0;
+       int left=0;
+       int right=0;
+       ArrayList<Integer>  ans=new ArrayList<>();
+       while(right<n){
+           sum+=arr[right];
+          
+           while(sum>s && left<right){
+               sum-=arr[left];
+               left++;
+           }
+            if(sum==s){
+               break;
+           }
+           right++;
+       }
+       if(sum==s){
+           ans.add(left+1);
+           ans.add(right+1);
+       }else{
+           ans.add(-1);
+       }
+       return ans;
+       
+    }
