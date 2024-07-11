@@ -1,0 +1,28 @@
+Minimum element in a sorted and rotated array
+
+int findMin(int arr[], int n)
+    {
+       if(n==1)return arr[0];
+       if(n==2)return Math.min(arr[0],arr[1]);
+       if(arr[0]<arr[n-1])return arr[0];
+       int start=0;
+       int end=n-1;
+       while(start<=end){
+           int mid=start+(end-start)/2;
+           if(arr[mid]>arr[mid+1]){
+               return arr[mid+1];
+           }
+           if(arr[mid-1]>arr[mid]){
+               return arr[mid];
+           }
+             if(arr[mid] > arr[start])
+            {
+                start= mid+1;
+            }
+            if(arr[mid] < arr[end])
+            {
+                end = mid-1;
+            }
+       }
+       return -1;
+    }
