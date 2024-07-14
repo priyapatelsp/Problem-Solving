@@ -3,6 +3,7 @@
 
  static int closest3Sum(int A[], int N, int X)
     {
+        
         Arrays.sort(A);
         int left=0;
         int right=0;
