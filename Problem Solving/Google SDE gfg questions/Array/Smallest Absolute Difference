@@ -1,0 +1,13 @@
+Smallest Absolute Difference
+-----------------------------------
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                pq.add(Math.abs(arr[i]-arr[j]));
+            }
+        }
+        for(int i=1;i<k;i++){
+            pq.poll();
+        }
+        return pq.poll();
+        }
