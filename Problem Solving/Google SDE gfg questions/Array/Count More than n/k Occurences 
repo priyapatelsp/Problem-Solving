@@ -1,0 +1,24 @@
+Count More than n/k Occurences
+
+---------------------------------
+
+ public int countOccurence(int[] arr, int n, int k)
+    {
+       HashMap<Integer,Integer>map=new HashMap<>();
+       for(int i=0;i<n;i++){
+           if(map.containsKey(arr[i])){
+                map.put(arr[i],map.get(arr[i])+1);
+           }else{
+               map.put(arr[i],1);
+           }
+
+       }
+       int div=n/k;
+       int count=0;
+       for(int a:map.keySet()){
+           if(map.get(a)>div){
+               count++;
+           }
+       }
+       return count;
+    }
