@@ -1,0 +1,81 @@
+ Build a Matrix With Conditions
+
+ public class Solution {
+    private int k;
+    public int[][] BuildMatrix(int k, int[][] rowConditions, int[][] colConditions) {
+        this.k = k;
+
+        // Get positions of all numbers
+        int[] row_positions = GetPositions(rowConditions);
+        int[] column_positions = GetPositions(colConditions);
+
+        // Check that there are no cycles
+        if (row_positions == null || column_positions == null)
+            return new int[0][];
+
+        // Create 2-d array
+        int[][] result = new int[k][];
+        for (int i = 0; i < k; i++) {
+            result[i] = new int[k];
+        }
+
+        // Put all number into their spots
+        for (int i = 1; i <= k; i++) {
+            result[row_positions[i]][column_positions[i]] = i;
+        }
+
+        return result;
+    }
+
+    private int[] GetPositions(int[][] conditions) {
+        // Keep a dict of numbers that are before and after other numbers
+        Dictionary<int, HashSet<int>> befores = new Dictionary<int, HashSet<int>>();
+        Dictionary<int, HashSet<int>> afters = new Dictionary<int, HashSet<int>>();
+
+        // Add all numbers as keys into the dictionaries
+        for (int i = 1; i <= this.k; i++) {
+            befores.Add(i, new HashSet<int>());
+            afters.Add(i, new HashSet<int>());
+        }
+
+        // Populate dictionaries
+        foreach (int[] condition in conditions) {
+            int before = condition[0];
+            int after = condition[1];
+
+            befores[after].Add(before);
+            afters[before].Add(after);  
+        }
+
+        int[] order = new int[k+1];
+        int position = 0;
+        while (befores.Count > 0) {
+            // Find the element with the least # of elements before it
+            int next_key = -1;
+            int next_count = Int32.MaxValue;
+            foreach (var pair in befores) {
+                if (pair.Value.Count < next_count) {
+                    next_key = pair.Key;
+                    next_count = pair.Value.Count;
+                }
+            }
+
+            // Remove this number from all after's before list
+            foreach (int after in afters[next_key])
+                if (befores.ContainsKey(after))
+                    befores[after].Remove(next_key);
+                else
+                    return null;        // Cycle detected
+                    // known because a number after the current one
+                    // has already been placed before this one
+
+            // Give this number a position in the matrix
+            order[next_key] = position++;
+
+            // Remove this number from the befores list
+            befores.Remove(next_key);
+        }
+
+        return order;
+    }
+}
