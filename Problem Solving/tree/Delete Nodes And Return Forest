@@ -51,10 +51,13 @@ class Solution {
             if (node.left != null) {
                 forest.add(node.left);
             }
+
+
+
             if (node.right != null) {
                 forest.add(node.right);
             }
-            return null; // Return null to delete the current node
+            return null; 
         }
         
         return node; // Return the current node if it is not deleted
