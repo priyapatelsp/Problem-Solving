@@ -1,0 +1,15 @@
+Largest Element in Array
+
+----------------------------
+
+
+
+class Solution {
+    public static int largest(int n, int[] arr) {
+        int maxVal=Integer.MIN_VALUE;
+       for(int i=0;i<n;i++){
+           maxVal=Math.max(arr[i],maxVal);
+       }
+       return maxVal;
+    }
+}
