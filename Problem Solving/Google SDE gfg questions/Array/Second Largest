@@ -1,0 +1,24 @@
+Second Largest
+
+-------------------
+
+
+// User function Template for Java
+
+class Solution {
+    public int print2largest(List<Integer> arr) {
+       int firstLargest=Integer.MIN_VALUE;
+       int secondMin=-1;
+       for(int i=0;i<arr.size();i++){
+           if(arr.get(i)>firstLargest){
+               secondMin=firstLargest;
+               firstLargest=arr.get(i);
+           }
+           if(arr.get(i)<firstLargest && arr.get(i)>secondMin){
+               secondMin=arr.get(i);
+           }
+       }
+       return secondMin;
+        
+    }
+}
