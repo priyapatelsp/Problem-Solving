@@ -1,0 +1,49 @@
+Union of Two Sorted Arrays
+
+------------------------------
+
+
+//User function Template for Java
+
+//arr1,arr2 : the arrays
+// n, m: size of arrays
+class Solution
+{
+    //Function to return a list containing the union of the two arrays.
+    public static ArrayList<Integer> findUnion(int arr1[], int arr2[], int n, int m)
+    {
+        int arrOne=0;
+        int arrTwo=0;
+         Set<Integer>ans=new TreeSet<>();
+        
+        while(arrOne<arr1.length && arrTwo<arr2.length){
+            if(arr1[arrOne]==arr2[arrTwo]){
+                ans.add(arr1[arrOne]);
+                arrOne++;
+                arrTwo++;
+            }else if(arr1[arrOne]<arr2[arrTwo]){
+                 ans.add(arr1[arrOne]);
+                arrOne++;
+          
+            }else{
+                ans.add(arr2[arrTwo]);
+                arrTwo++;
+            }
+        }
+       while(arrOne<arr1.length){
+           ans.add(arr1[arrOne]);
+                arrOne++;
+       }
+       while(arrTwo<arr2.length){
+           ans.add(arr2[arrTwo]);
+                arrTwo++;
+       }
+       ArrayList<Integer> mp=new ArrayList<>();
+        for(int s:ans){
+            mp.add(s);
+        }
+
+       return mp;
+    }
+}
+
