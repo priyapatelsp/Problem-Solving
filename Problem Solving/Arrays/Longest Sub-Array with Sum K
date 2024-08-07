@@ -1,0 +1,21 @@
+Longest Sub-Array with Sum K
+
+
+
+  // Function for finding maximum and value pair
+    public static int lenOfLongSubarr (int A[], int N, int K) {
+       Map<Integer,Integer>mp=new HashMap<>();
+       int sum=0;
+       int ans=0;
+       mp.put(0,-1);
+       for(int i=0;i<N;i++){
+           sum+=A[i];
+           if(!mp.containsKey(sum)){
+               mp.put(sum,i);
+           }
+           if(mp.containsKey(sum-K)){
+               ans=Math.max(ans,i-mp.get(sum-K));
+           }
+       }
+       return ans;
+    }
