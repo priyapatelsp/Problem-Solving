@@ -1,0 +1,47 @@
+Top View of Binary Tree
+
+
+
+class Pair
+  {
+        Node node;
+        int pos;
+        public Pair(Node node,int pos)
+   {
+       this.node=node;
+       this.pos=pos;
+   }
+}
+class Solution {
+    // Function to return a list of nodes visible from the top view
+    // from left to right in Binary Tree.
+    
+    static ArrayList<Integer> topView(Node root) {
+       Queue<Pair> q=new LinkedList<>();
+       Map<Integer,Integer> map=new TreeMap<>();
+       ArrayList<Integer> res=new ArrayList<>();
+       if(root==null)
+           return res;
+       
+       q.add(new Pair(root,0));
+       while(!q.isEmpty())
+       {
+           Pair p=q.poll();
+           Node cur=p.node;
+           int x=p.pos;
+           if(!map.containsKey(x))
+               map.put(x,cur.data);
+               
+           if(cur.left!=null)
+               q.add(new Pair(cur.left,x-1));
+           if(cur.right!=null)
+               q.add(new Pair(cur.right,x+1));
+       }
+       
+       for(int e:map.keySet())
+       {
+           res.add(map.get(e));
+       }
+       return res;
+    }
+}
