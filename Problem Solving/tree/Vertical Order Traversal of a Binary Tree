@@ -1,0 +1,39 @@
+Vertical Order Traversal of a Binary Tree
+
+class Solution {
+    public void helper(TreeNode root,int level,Map<Integer,PriorityQueue<Integer>> mp){
+        if(root==null)return;
+        List<Integer> a=new ArrayList<>();
+         
+        if(mp.get(level)!=null){
+            a=mp.get(level);
+            a.add(root.val);
+        }else{
+            
+            a.add(root.val);
+        }
+      mp.put(level,a);
+        if(root.left!=null){
+            helper(root.left,level-1,mp);
+        }
+         
+        if(root.right!=null){
+             helper(root.right,level+1,mp);
+        }
+        
+    }
+    public List<List<Integer>> verticalTraversal(TreeNode root) {
+        Map<Integer,PriorityQueue<Integer>> mp=new TreeMap<>();
+        int level=0;
+        List<PriorityQueue<Integer>> ans=new ArrayList<>();
+        //mp.put(level,root.val);
+        helper(root,level,mp);
+        for(Map.Entry<Integer, PriorityQueue<Integer>> entry : mp.entrySet()){
+            List<Integer> a=entry.getValue();
+            Collections.sort(a);
+            ans.add(a);
+        }
+        return ans;
+        
+    }
+}
