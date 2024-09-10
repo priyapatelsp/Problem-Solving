@@ -1,0 +1,24 @@
+Number of NGEs to the right
+
+
+class Solution {
+  public static int[] count_NGEs(int N, int arr[], int queries, int indices[]) {
+     int[] ans = new int[queries];
+        for (int i = 0; i < queries; i++) {
+            int cnt = 0;
+            int j = indices[i];
+            
+            if (j < N - 1) {
+                for (int k = j + 1; k < N; k++) {
+                    if (arr[j] < arr[k]) {
+                        cnt++;
+                    }
+                }
+            }
+            ans[i] = cnt;
+        }
+        return ans;
+  
+  }
+}
+     
