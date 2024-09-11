@@ -1,0 +1,22 @@
+Generate Parentheses
+
+
+class Solution {
+    public void helper(List<String> ans,String s,int a,int b,int n){
+        if(s.length()==n*2){
+            ans.add(s);
+            return ;
+        }
+        if(a<n){
+            helper(ans,s+"(",a+1,b,n);
+        }
+        if(b<a){
+            helper(ans,s+")",a,b+1,n);
+        }
+    }
+    public List<String> generateParenthesis(int n) {
+        List<String> ans = new ArrayList<>();
+        helper(ans,"",0,0,n);
+        return ans;
+    }
+}
