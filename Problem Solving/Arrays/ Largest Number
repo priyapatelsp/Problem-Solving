@@ -1,0 +1,29 @@
+ Largest Number
+
+ class Solution {
+    public String largestNumber(int[] nums) {
+        
+        PriorityQueue<String> maxHeap = new PriorityQueue<>(
+            new Comparator<String>() {
+                @Override
+                public int compare(String first, String second) {
+                    return (second + first).compareTo(first + second);
+                }
+            }
+        );
+
+        int totalLength = 0;
+
+        for (int num : nums) {
+            String strNum = Integer.toString(num);
+            totalLength += strNum.length();
+            maxHeap.offer(strNum);
+        }
+
+        StringBuilder result = new StringBuilder(totalLength);
+        while (!maxHeap.isEmpty()) {
+            result.append(maxHeap.poll());
+        }
+        return result.charAt(0) == '0' ? "0" : result.toString();
+    }
+}
