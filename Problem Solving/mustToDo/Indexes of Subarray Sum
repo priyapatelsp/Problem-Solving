@@ -1,0 +1,183 @@
+Indexes of Subarray Sum
+
+
+geeksforgeeks
+1
+P
+My Profile
+My Courses
+Leaderboard
+Explore Community
+Transaction History
+Saved Videos
+Edit Profile
+Logout
+Tutorials
+Python Tutorial
+Java
+Programming Languages
+System Design
+Interview Corner
+Computer Science Subjects
+DevOps
+Linux
+Software Testing
+Databases
+Android
+Excel
+Mathematics
+DSA
+Data Structures
+Algorithms
+DSA Tutorial
+Practice
+Competitive Programming
+Company Wise SDE Sheets
+DSA Cheat Sheets
+Top Interview Questions
+Puzzles
+Data Science
+Python Tutorial
+R Tutorial
+Machine Learning
+Data Science using Python
+Data Science using R
+Data Science Packages
+Data Visualization
+Data Analysis
+Deep Learning
+NLP Tutorial
+Web Tech
+HTML Tutorial
+CSS Tutorial
+JavaScript Tutorial
+PHP Tutorial
+ReactJS Tutorial
+NodeJS Tutorial
+AngularJS Tutorial
+Bootstrap Tutorial
+Typescript
+Web Development Using Python
+Wordpress Tutorial
+Web Design
+Cheat Sheets
+Learn Complete Web Development
+Courses
+Coding for Everyone
+DSA to Development
+Machine Learning & Data Science
+Generative AI & ChatGPT
+Become AWS Certified
+DSA Courses
+Programming Languages
+
+
+Change Language
+Menu
+
+
+
+Refresh
+
+Time (IST)	Status	Marks	Lang	Test Cases	Code
+2024-08-30 02:46:23	Correct	
+0Info
+java	1141 / 1141	View
+2024-08-30 02:36:29	Wrong	
+0
+java	5 / 1141	View
+2024-08-30 02:35:43	Wrong	
+0
+java	5 / 1141	View
+2024-07-09 03:08:56	Correct	
+0Info
+java	1141 / 1141	View
+2024-06-03 02:25:55	Correct	
+0Info
+java	1133 / 1133	View
+2024-06-03 02:24:39	Wrong	
+0
+java	0 / 1133	View
+2024-06-03 02:19:02	Wrong	
+0
+java	0 / 1133	View
+2024-06-03 02:17:25	Wrong	
+0
+java	0 / 1133	View
+2024-06-03 02:13:18	Wrong	
+0
+java	5 / 1133	View
+2024-06-03 02:11:05	Wrong	
+0
+java	5 / 1133	View
+2024-06-03 02:07:16	Wrong	
+0
+java	5 / 1133	View
+2024-05-23 07:33:21	Correct	
+4
+java	1133 / 1133	View
+2024-05-23 07:30:48	Wrong	
+0
+java	11 / 1133	View
+2024-05-23 07:29:50	Wrong	
+0
+java	11 / 1133	View
+2024-05-23 07:29:09	RunTime Error	
+0
+java	0 / 1133	View
+2024-05-23 07:27:37	Wrong	
+0
+java	5 / 1133	View
+2024-05-23 07:26:25	Wrong	
+0
+java	5 / 1133	View
+2024-05-23 07:25:59	Wrong	
+0
+java	0 / 1133	View
+2024-05-23 07:25:22	Wrong	
+0
+java	0 / 1133	View
+2024-05-23 07:24:41	Wrong	
+0
+java	5 / 1133	View
+2024-05-23 07:19:58	Wrong	
+0
+java	0 / 1133	View
+2024-05-23 07:09:25	Wrong	
+0
+java	0 / 1133	View
+2024-05-23 07:08:20	Wrong	
+0
+java	0 / 1133	View
+
+
+
+class Solution {
+    public static ArrayList<Integer> subarraySum(int[] arr, int n, int s) {
+       ArrayList<Integer>ans=new ArrayList<>();
+       int left=0;
+       int right=0;
+       int sum=0;
+       for(int i=0;i<n;i++){
+           sum+=arr[i];
+           if(sum>s){
+               while(sum>s && left<i){
+                   sum-=arr[left];
+                   left++;
+               }
+           }
+           right=i;
+           if(sum==s)break;
+           
+       }
+       if(sum==s){
+            ans.add(left+1);
+               ans.add(right+1);
+               return ans;
+       }else{
+           ans.add(-1);
+       }
+      return ans;
+       
+    }
+}
