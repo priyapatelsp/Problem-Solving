@@ -1,8 +1,5 @@
 Kadane's Algorithm
 
-
-
-// User function Template for Java
 class Solution {
 
     // arr: input array
