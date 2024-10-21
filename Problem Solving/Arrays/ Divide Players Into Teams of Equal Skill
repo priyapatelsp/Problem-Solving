@@ -1,0 +1,24 @@
+ Divide Players Into Teams of Equal Skill
+
+ class Solution {
+    public long dividePlayers(int[] skill) {
+        if(skill.length%2!=0)return -1;
+        Arrays.sort(skill);
+        int start=0;
+        int end=skill.length-1;
+        long sum=0;
+        int prev=-1;
+        while(start<end){
+            if(prev==-1){
+                prev=skill[start]+skill[end];
+            }else{
+                if(prev!=skill[start]+skill[end])return -1;
+                prev=skill[start]+skill[end];
+            }
+            sum+=skill[start]*skill[end];
+            start++;
+            end--;
+        }
+        return sum;
+    }
+}
