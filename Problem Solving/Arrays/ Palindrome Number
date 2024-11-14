@@ -1,0 +1,17 @@
+ Palindrome Number
+
+ class Solution {
+    public boolean isPalindrome(int x) {
+        
+        String s=String.valueOf(x);
+        int j=s.length()-1;
+        int i=0;
+        if(x<0)return false;
+        while(j>=i){
+            if(s.charAt(i)!=s.charAt(j))return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+}
