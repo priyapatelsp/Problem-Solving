@@ -37,16 +37,10 @@
         if (digits.length() == 0) {
             return new ArrayList<>();
         }
-        
-        // Clear output for fresh calculation
+    
         output.clear();
-        
-        // Start backtracking process
+      
         backtrack("", digits);
-        
-
-
-        
         return output;
     }
 }
