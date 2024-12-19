@@ -1,0 +1,23 @@
+Two Best Non-Overlapping Events
+
+class Solution {
+    public int maxTwoEvents(int[][] events) {
+        int n=events.length;
+        Arrays.sort(events,(a,b)->Integer.compare(a[0],b[0]));
+        PriorityQueue<int[] > pq=new PriorityQueue<>((a,b)->Integer.compare(a[1],b[1]));
+        int maxVal=0;
+        int res=0;
+        for(int i=0;i<n;i++){
+            int start=events[i][0];
+            int end=events[i][1];
+            int val=events[i][2];
+
+            while(!pq.isEmpty() && pq.peek()[1]<start){
+               maxVal=Math.max(maxVal,pq.poll()[2]);
+            } 
+            res=Math.max(res,maxVal+val);
+            pq.add(new int[]{start,end,val});
+        }
+        return res;
+    }
+}
