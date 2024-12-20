@@ -1,0 +1,20 @@
+Special Array II
+
+class Solution {
+    public boolean[] isArraySpecial(int[] nums, int[][] queries) {
+        int n=nums.length;
+        int m=queries.length;
+        boolean[] ans=new boolean[m];
+        int[] sumArr=new int[n];
+        int count=0;
+        for(int i=1;i<n;i++){
+            if(nums[i-1]%2!=nums[i]%2)count++;
+            sumArr[i]=count;
+        }
+        for(int i=0;i<m;i++){
+            ans[i]=true;
+            if(sumArr[queries[i][1]]-sumArr[queries[i][0]]!=queries[i][1]-queries[i][0])ans[i]=false;
+        }
+        return ans;
+    }
+}
