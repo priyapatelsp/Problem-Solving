@@ -1,0 +1,21 @@
+ Take Gifts From the Richest Pile
+
+ class Solution {
+    public long pickGifts(int[] gifts, int k) {
+        PriorityQueue<Integer>pq=new PriorityQueue<>((o1, o2) -> o2.compareTo(o1));
+        for(int i=0;i<gifts.length;i++){
+            pq.add(gifts[i]);
+        }
+        while(k>0){
+            int ele=pq.poll();
+            int sqrEle=(int)Math.sqrt(ele);
+            pq.add(sqrEle);
+            k--;
+        }
+        long sum=0;
+        while(!pq.isEmpty()){
+            sum+=pq.poll();
+        }
+        return sum;
+    }
+}
