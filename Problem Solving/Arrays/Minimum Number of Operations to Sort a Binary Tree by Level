@@ -1,0 +1,38 @@
+Minimum Number of Operations to Sort a Binary Tree by Level
+
+class Solution {
+    public int minimumOperations(TreeNode root) {
+        if(root==null)return 0;
+        Queue<TreeNode> q=new LinkedList<>();
+        q.add(root);
+        int val=0;
+        while(!q.isEmpty()){
+            int s=q.size();
+            int prev=0;
+            List<Integer> levelNode=new ArrayList<>();
+            while(s>0){
+                TreeNode temp=q.poll();
+                levelNode.add(temp.val);
+                if(temp.left!=null)q.add(temp.left);
+                if(temp.right!=null)q.add(temp.right);
+                s--;
+            }
+            List<Integer> sortedArray=new ArrayList<>(levelNode);
+            Collections.sort(sortedArray);
+            Map<Integer, Integer> mp = new HashMap<>();
+            for (int i = 0; i < levelNode.size(); i++) {
+                mp.put(levelNode.get(i), i);
+            }
+            for (int i = 0; i < levelNode.size(); i++) {
+                while (!levelNode.get(i).equals(sortedArray.get(i))) {
+                    val++;
+                    int cur = mp.get(sortedArray.get(i));
+                    mp.put(levelNode.get(i), cur);
+                    Collections.swap(levelNode, i, cur);
+                }
+            }
+
+        }
+        return val;
+    }
+}
