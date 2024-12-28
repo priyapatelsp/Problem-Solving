@@ -1,0 +1,33 @@
+ Reverse Odd Levels of Binary Tree
+
+ /**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public TreeNode reverseOddLevels(TreeNode root) {
+        reverseOddLevelsHelper(root.left,root.right,0);
+        return root;
+    }
+    public void reverseOddLevelsHelper(TreeNode rootLeft,TreeNode rootRight,int level) {
+        if(rootLeft==null && rootRight==null)return ;
+        if(level%2==0){
+            int temp=rootLeft.val;
+            rootLeft.val=rootRight.val;
+            rootRight.val=temp;
+        }
+        reverseOddLevelsHelper(rootLeft.left,rootRight.right,level+1);
+        reverseOddLevelsHelper(rootLeft.right,rootRight.left,level+1);
+    }
+}
